@@ -1,0 +1,18 @@
+# GET http://localhost:4004/odata/v4/my/User_Followed_Colleagues
+# Accept: application/json
+
+GET http://localhost:4004/odata/v4/my/User_Followed_Colleagues/03742f59-5e4f-4076-8f4c-05932a957a36
+Accept: application/json
+
+# POST http://localhost:4004/odata/v4/my/User_Followed_Colleagues
+# Content-Type: application/json
+
+# {
+#   "user_id": { "user_id": "0bc52ea2-cd45-459c-b2d5-bbf6e8f9a146" },
+#   "colleague_id": { "colleague_id": "14" }
+# }
+
+# DELETE http://localhost:4004/odata/v4/my/User_Followed_Colleagues/03742f59-5e4f-4076-8f4c-05932a957a36
+# Content-Type: application/json
+
+

@@ -1,0 +1,25 @@
+# GET http://localhost:4004/odata/v4/my/Tags
+# Accept: application/json
+
+GET http://localhost:4004/odata/v4/my/Tags/6ccbee30-7b8f-484d-a766-6cb10a3b603f
+Accept: application/json"
+
+# POST http://localhost:4004/odata/v4/my/Tags
+# Content-Type: application/json
+
+# {
+#   "tag_name": "React",
+#   "tag_description": "Frontend framework"
+# }
+
+
+# PATCH http://localhost:4004/odata/v4/my/Tags/6ccbee30-7b8f-484d-a766-6cb10a3b603f
+# Content-Type: application/json
+
+# {
+#   "tag_name": "React.js",
+#   "tag_description": "Een JavaScript library voor UI"
+# }
+
+
+DELETE http://localhost:4004/odata/v4/my/Tags/6ccbee30-7b8f-484d-a766-6cb10a3b603f

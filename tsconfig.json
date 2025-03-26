@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "CommonJS",
+      "outDir": "dist/srv",
+      "rootDir": "srv",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "typeRoots": ["./types", "./node_modules/@types"],
+      "types": ["node", "@sap/xsenv"]
+    },
+    "include": ["srv/**/*"],
+    "exclude": ["node_modules", "dist"]
+}
+  

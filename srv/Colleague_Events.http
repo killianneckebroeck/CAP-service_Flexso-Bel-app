@@ -1,0 +1,24 @@
+# GET http://localhost:4004/odata/v4/my/Colleague_Events
+# Accept: application/json
+
+GET http://localhost:4004/odata/v4/my/Colleague_Events/6a83f3a5-560e-4cea-a197-1de5519966d7
+Accept: application/json
+
+# POST http://localhost:4004/odata/v4/my/Colleague_Events
+# Content-Type: application/json
+
+# {
+#   "colleague_id": { "colleague_id": "14" },
+#   "event_id": { "event_id": "319de89c-c388-4cc7-8258-2bc97ef6a054" },
+#   "presence": true
+# }
+
+# PATCH http://localhost:4004/odata/v4/my/Colleague_Events/6a83f3a5-560e-4cea-a197-1de5519966d7
+# Content-Type: application/json
+
+# {
+#   "presence": false
+# }
+
+DELETE http://localhost:4004/odata/v4/my/Colleague_Events/6a83f3a5-560e-4cea-a197-1de5519966d7
+Content-Type: application/json
