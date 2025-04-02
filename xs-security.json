@@ -1,27 +1,13 @@
 {
   "xsappname": "Bel_app",
   "tenant-mode": "dedicated",
-  "scopes": [
-    {
-      "name": "$XSAPPNAME.Bel_App_User",
-      "description": "Toegang voor gebruikers"
-    }
-  ],
-  "role-templates": [
-    {
-      "name": "Bel_App_User",
-      "description": "Toegang tot de applicatie",
-      "scope-references": ["$XSAPPNAME.Bel_App_User"]
-    }
-  ],
-  "role-collections": [
-    {
-      "name": "Bel_App_User_Collection",
-      "description": "Rolcollectie voor geautoriseerde gebruikers",
-      "role-template-references": ["$XSAPPNAME.Bel_App_User"]
-    }
-  ],
   "oauth2-configuration": {
+    "grant-types": [
+      "password",
+      "authorization_code",
+      "client_credentials",
+      "refresh_token"
+    ],
     "redirect-uris": [
       "https://*.us10-001.hana.ondemand.com/**"
     ]
@@ -42,5 +28,4 @@
     "DELETE",
     "OPTIONS"
   ]
-
 }
