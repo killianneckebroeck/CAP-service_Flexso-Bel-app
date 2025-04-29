@@ -1,5 +1,5 @@
 import cds, { Request } from '@sap/cds';
-console.log("✅ service.ts is geladen!");
+console.log("service.ts is geladen!");
 
 export default async function (srv: any) {
     const { Colleagues, Followups } = srv.entities;
@@ -9,9 +9,35 @@ export default async function (srv: any) {
         return;
     }
 
+    srv.before('DELETE', 'Colleagues', async (req: Request) => {
+        const db = cds.transaction(req);
+        const { colleague_id } = req.data as { colleague_id: string };
+    
+        if (!colleague_id) return;
+    
+        console.log(`Start cleanup voor collega ${colleague_id}`);
+    
+        // Verwijder Followups
+        await db.run(DELETE.from('Followups').where({ colleague_id }));
+        console.log("✅ Followups verwijderd");
+    
+        // Verwijder User_Followed_Colleagues
+        await db.run(DELETE.from('User_Followed_Colleagues').where({ colleague_id }));
+        console.log("✅ Volg-relaties verwijderd");
+    
+        // Verwijder Tags_Colleagues
+        await db.run(DELETE.from('Tags_Colleagues').where({ colleague_id }));
+        console.log("✅ Tag-koppelingen verwijderd");
+    
+        // Verwijder Colleague_Events
+        await db.run(DELETE.from('Colleague_Events').where({ colleague_id }));
+        console.log("✅ Event-koppelingen verwijderd");
+    });
+    
+
     srv.before(['CREATE', 'UPDATE', 'PATCH'], 'Colleagues', async (req: Request) => {
-        console.log("🚀 PATCH wordt uitgevoerd op Colleagues!");
-        console.log("📊 Inkomende data:", req.data);
+        console.log("PATCH wordt uitgevoerd op Colleagues!");
+        console.log("Inkomende data:", req.data);
     
         const { frequency_level } = req.data as { frequency_level?: string };
     
@@ -100,7 +126,7 @@ export default async function (srv: any) {
 
     //FOLLOW-UPS
 
-    // ✅ BEFORE HOOK voor validatie van 'Followup'
+    // BEFORE HOOK voor validatie van 'Followup'
    // BEFORE HOOK voor validatie van 'Followup'
     srv.before('CREATE', 'Followups', async (req: Request) => {
         const { followup_message, date } = req.data as { followup_message?: string; date?: string };
@@ -118,7 +144,7 @@ export default async function (srv: any) {
 
 
     srv.on('CREATE', 'Followups', async (req: Request) => {
-        console.log("🚀 Ontvangen data:", req.data);
+        console.log("Ontvangen data:", req.data);
         const { followup_message, date, user_id, colleague_id } = req.data as any;
     
         if (!followup_message || !date || !user_id || !colleague_id) {
@@ -126,10 +152,10 @@ export default async function (srv: any) {
             return req.reject(400, "Vereiste velden ontbreken: followup_message, date, user_id en colleague_id zijn verplicht.");
         }
     
-        // ✅ Haal de juiste entities op uit de service
+        // Haal de juiste entities op uit de service
         const { Users, Colleagues, Followups } = srv.entities;
     
-        // ✅ Correct ophalen van de UUID van de associaties
+        // Correct ophalen van de UUID van de associaties
         const userUUID = user_id?.user_id;
         const colleagueUUID = colleague_id?.colleague_id;
     
@@ -140,7 +166,7 @@ export default async function (srv: any) {
     
         console.log(`🔍 Validatie: Gebruiker ${userUUID} en Collega ${colleagueUUID}`);
     
-        // ✅ Correcte database-query (gebruik de opgehaalde entities)
+        // Correcte database-query (gebruik de opgehaalde entities)
         const userExists = await cds.transaction(req).run(SELECT.one.from(Users).where({ user_id: userUUID }));
         if (!userExists) {
             console.log(`❌ Fout: Gebruiker ${userUUID} bestaat niet.`);
@@ -153,7 +179,7 @@ export default async function (srv: any) {
             return req.reject(400, `Collega met ID ${colleagueUUID} bestaat niet.`);
         }
     
-        console.log("✅ Gevalideerde data, followup wordt aangemaakt.");
+        console.log("Gevalideerde data, followup wordt aangemaakt.");
     
         const newFollowup = {
             followup_id: cds.utils.uuid(),
@@ -171,9 +197,9 @@ export default async function (srv: any) {
             
     
 
-    // ✅ PATCH Followup (Update)
+    // PATCH Followup (Update)
     srv.on('PATCH', 'Followups', async (req: Request) => {
-        console.log("🚀 Ontvangen update-data:", req.data);
+        console.log("Ontvangen update-data:", req.data);
     
         const { followup_id } = req.data as { followup_id: string };
         if (!followup_id) {
@@ -187,15 +213,15 @@ export default async function (srv: any) {
             return req.reject(404, "Follow-up niet gevonden.");
         }
     
-        // ✅ Voer de update uit
+        // Voer de update uit
         await cds.transaction(req).run(UPDATE(Followups).set(req.data).where({ followup_id }));
     
-        // ✅ Retourneer de geüpdatete Followup
+        // Retourneer de geüpdatete Followup
         return await cds.transaction(req).run(SELECT.one.from(Followups).where({ followup_id }));
     });
     
 
-    // ✅ DELETE Followup
+    // DELETE Followup
     srv.on('DELETE', 'Followups', async (req: Request) => {
         const { followup_id } = req.data as { followup_id: string };
 
@@ -224,7 +250,7 @@ export default async function (srv: any) {
 
     // CREATE Events
     srv.on('CREATE', 'Events', async (req: Request) => {
-        console.log("🚀 Ontvangen event data:", req.data);
+        console.log("Ontvangen event data:", req.data);
 
         const { event_name, event_description, event_date, event_hour } = req.data as any;
 
@@ -248,7 +274,7 @@ export default async function (srv: any) {
 
     // PATCH Events
     srv.on('PATCH', 'Events', async (req: Request) => {
-        console.log("🚀 Ontvangen update-event data:", req.data);
+        console.log("Ontvangen update-event data:", req.data);
     
         const { event_id } = req.data as { event_id: string };
         if (!event_id) {
@@ -270,7 +296,7 @@ export default async function (srv: any) {
 
     // DELETE Events
     srv.on('DELETE', 'Events', async (req: Request) => {
-        console.log("🚀 Ontvangen delete-request voor event:", req.data);
+        console.log("Ontvangen delete-request voor event:", req.data);
     
         const { event_id } = req.data as { event_id: string };
         if (!event_id) {
@@ -294,9 +320,9 @@ export default async function (srv: any) {
 
     // TAG
 
-    // ✅ CREATE Tag
+    // CREATE Tag
     srv.on('CREATE', 'Tags', async (req: Request) => {
-        console.log("🚀 Ontvangen tag-data:", req.data);
+        console.log("Ontvangen tag-data:", req.data);
 
         const { tag_name, tag_description } = req.data as any;
 
@@ -315,9 +341,9 @@ export default async function (srv: any) {
         return await cds.transaction(req).run(SELECT.one.from('Tags').where({ tag_id: newTag.tag_id }));
     });
 
-    // ✅ PATCH Tag (UPDATE)
+    // PATCH Tag (UPDATE)
     srv.on('PATCH', 'Tags', async (req: Request) => {
-        console.log("🚀 Ontvangen update-tag data:", req.data);
+        console.log("Ontvangen update-tag data:", req.data);
 
         const { tag_id } = req.data as { tag_id: string };
         if (!tag_id) {
@@ -336,9 +362,9 @@ export default async function (srv: any) {
         return await cds.transaction(req).run(SELECT.one.from(Tags).where({ tag_id }));
     });
 
-    // ✅ DELETE Tag
+    // DELETE Tag
     srv.on('DELETE', 'Tags', async (req: Request) => {
-        console.log("🚀 Ontvangen delete-request voor tag:", req.data);
+        console.log("Ontvangen delete-request voor tag:", req.data);
 
         const { tag_id } = req.data as { tag_id: string };
         if (!tag_id) {
@@ -360,9 +386,9 @@ export default async function (srv: any) {
 
     // USER_FOLLOWED_COLLEAGUE
 
-    // ✅ CREATE User_Followed_Colleague (Gebruiker volgt een collega)
+    // CREATE User_Followed_Colleague (Gebruiker volgt een collega)
     srv.on('CREATE', 'User_Followed_Colleagues', async (req: Request) => {
-        console.log("🚀 Ontvangen follow-data:", req.data);
+        console.log("Ontvangen follow-data:", req.data);
 
         const { user_id, colleague_id } = req.data as any;
 
@@ -372,7 +398,7 @@ export default async function (srv: any) {
 
         const { Users, Colleagues, User_Followed_Colleagues } = srv.entities;
 
-        // ✅ Controleer of user_id en colleague_id bestaan
+        // Controleer of user_id en colleague_id bestaan
         const userExists = await cds.transaction(req).run(SELECT.one.from(Users).where({ user_id }));
         if (!userExists) {
             return req.reject(400, `Gebruiker met ID ${user_id} bestaat niet.`);
@@ -383,7 +409,7 @@ export default async function (srv: any) {
             return req.reject(400, `Collega met ID ${colleague_id} bestaat niet.`);
         }
 
-        console.log(`✅ Validatie geslaagd: Gebruiker ${user_id} volgt Collega ${colleague_id}`);
+        console.log(`Validatie geslaagd: Gebruiker ${user_id} volgt Collega ${colleague_id}`);
 
         const newFollow = {
             id: cds.utils.uuid(),
@@ -396,9 +422,9 @@ export default async function (srv: any) {
         return await cds.transaction(req).run(SELECT.one.from(User_Followed_Colleagues).where({ id: newFollow.id }));
     });
 
-    // ✅ DELETE User_Followed_Colleague (Gebruiker ontvolgt een collega)
+    // DELETE User_Followed_Colleague (Gebruiker ontvolgt een collega)
     srv.on('DELETE', 'User_Followed_Colleagues', async (req: Request) => {
-        console.log("🚀 Ontvangen delete-request voor follow:", req.data);
+        console.log("Ontvangen delete-request voor follow:", req.data);
 
         const { id } = req.data as { id: string };
         if (!id) {
@@ -421,7 +447,7 @@ export default async function (srv: any) {
 
     // CREATE
     srv.on('CREATE', 'Tags_Colleagues', async (req: Request) => {
-        console.log("🚀 Ontvangen data voor tag-collega koppeling:", req.data);
+        console.log("Ontvangen data voor tag-collega koppeling:", req.data);
     
         const { colleague_id, tag_id } = req.data as any;
     
@@ -431,7 +457,7 @@ export default async function (srv: any) {
     
         const { Colleagues, Tags, Tags_Colleagues } = srv.entities;
     
-        // ✅ Controleer of de collega en tag bestaan
+        // Controleer of de collega en tag bestaan
         const colleagueExists = await cds.transaction(req).run(SELECT.one.from(Colleagues).where({ colleague_id }));
         if (!colleagueExists) {
             return req.reject(400, `Collega met ID ${colleague_id} bestaat niet.`);
@@ -442,7 +468,7 @@ export default async function (srv: any) {
             return req.reject(400, `Tag met ID ${tag_id} bestaat niet.`);
         }
     
-        console.log(`✅ Validatie geslaagd: Tag ${tag_id} wordt gekoppeld aan Collega ${colleague_id}`);
+        console.log(`Validatie geslaagd: Tag ${tag_id} wordt gekoppeld aan Collega ${colleague_id}`);
     
         const newTagColleague = {
             id: cds.utils.uuid(),
@@ -457,7 +483,7 @@ export default async function (srv: any) {
 
     // DELETE
     srv.on('DELETE', 'Tags_Colleagues', async (req: Request) => {
-        console.log("🚀 Ontvangen delete-request voor tag-collega koppeling:", req.data);
+        console.log("Ontvangen delete-request voor tag-collega koppeling:", req.data);
     
         const { id } = req.data as { id: string };
         if (!id) {
@@ -482,7 +508,7 @@ export default async function (srv: any) {
 
     //CREATE
     srv.on('CREATE', 'Colleague_Events', async (req: Request) => {
-        console.log("🚀 Ontvangen data voor collega-event koppeling:", req.data);
+        console.log("Ontvangen data voor collega-event koppeling:", req.data);
     
         const { colleague_id, event_id, presence } = req.data as any;
     
@@ -492,7 +518,7 @@ export default async function (srv: any) {
     
         const { Colleagues, Events, Colleague_Events } = srv.entities;
     
-        // ✅ Controleer of de collega en het event bestaan
+        // Controleer of de collega en het event bestaan
         const colleagueExists = await cds.transaction(req).run(SELECT.one.from(Colleagues).where({ colleague_id }));
         if (!colleagueExists) {
             return req.reject(400, `Collega met ID ${colleague_id} bestaat niet.`);
@@ -503,7 +529,7 @@ export default async function (srv: any) {
             return req.reject(400, `Event met ID ${event_id} bestaat niet.`);
         }
     
-        console.log(`✅ Validatie geslaagd: Collega ${colleague_id} wordt gekoppeld aan Event ${event_id}`);
+        console.log(`Validatie geslaagd: Collega ${colleague_id} wordt gekoppeld aan Event ${event_id}`);
     
         const newColleagueEvent = {
             id: cds.utils.uuid(),
@@ -519,7 +545,7 @@ export default async function (srv: any) {
 
     //PATCH
     srv.on('PATCH', 'Colleague_Events', async (req: Request) => {
-        console.log("🚀 Ontvangen update voor collega-event koppeling:", req.data);
+        console.log("Ontvangen update voor collega-event koppeling:", req.data);
     
         const { id, presence } = req.data as { id: string; presence?: boolean };
     
@@ -546,7 +572,7 @@ export default async function (srv: any) {
 
     //DELETE
     srv.on('DELETE', 'Colleague_Events', async (req: Request) => {
-        console.log("🚀 Ontvangen delete-request voor collega-event koppeling:", req.data);
+        console.log("Ontvangen delete-request voor collega-event koppeling:", req.data);
     
         const { id } = req.data as { id: string };
     

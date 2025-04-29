@@ -1,5 +1,5 @@
-GET http://localhost:4004/odata/v4/my/Colleagues
-Accept: application/json
+# GET http://localhost:4004/odata/v4/my/Colleagues
+# Accept: application/json
 
 # GET http://localhost:4004/odata/v4/my/Colleagues(colleague_id='ca93ab7f-ea31-4f99-a4b9-a24fc88b00ae')
 # Accept: application/json
@@ -29,6 +29,6 @@ Accept: application/json
 # }
 
 
-# DELETE http://localhost:4004/odata/v4/my/Colleagues(colleague_id='ca93ab7f-ea31-4f99-a4b9-a24fc88b00ae')
-# Content-Type: application/json
-# Accept: application/json
+DELETE http://localhost:4004/odata/v4/my/Colleagues/9aeb0510-f037-4e4b-8978-544fc830831d
+Content-Type: application/json
+Accept: application/json

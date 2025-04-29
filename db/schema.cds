@@ -18,8 +18,9 @@ entity User
     first_name : String(100) not null;
     last_name : String(100) not null;
     email : String(100) not null;
-    password : String(100) not null;
     phone_number : String(100);
+    password : String(100);
+    last_time_called : DateTime;
 }
 
 entity Followup
