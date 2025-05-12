@@ -21,6 +21,7 @@ entity User
     phone_number : String(100);
     password : String(100);
     last_time_called : DateTime;
+    streak_count : Integer default 0;
 }
 
 entity Followup

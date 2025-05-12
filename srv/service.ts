@@ -19,19 +19,19 @@ export default async function (srv: any) {
     
         // Verwijder Followups
         await db.run(DELETE.from('Followups').where({ colleague_id }));
-        console.log("✅ Followups verwijderd");
+        console.log("Followups verwijderd");
     
         // Verwijder User_Followed_Colleagues
         await db.run(DELETE.from('User_Followed_Colleagues').where({ colleague_id }));
-        console.log("✅ Volg-relaties verwijderd");
+        console.log("Volg-relaties verwijderd");
     
         // Verwijder Tags_Colleagues
         await db.run(DELETE.from('Tags_Colleagues').where({ colleague_id }));
-        console.log("✅ Tag-koppelingen verwijderd");
+        console.log("Tag-koppelingen verwijderd");
     
         // Verwijder Colleague_Events
         await db.run(DELETE.from('Colleague_Events').where({ colleague_id }));
-        console.log("✅ Event-koppelingen verwijderd");
+        console.log("Event-koppelingen verwijderd");
     });
     
 
@@ -148,7 +148,7 @@ export default async function (srv: any) {
         const { followup_message, date, user_id, colleague_id } = req.data as any;
     
         if (!followup_message || !date || !user_id || !colleague_id) {
-            console.log("❌ Fout: Vereiste velden ontbreken!");
+            console.log("Fout: Vereiste velden ontbreken!");
             return req.reject(400, "Vereiste velden ontbreken: followup_message, date, user_id en colleague_id zijn verplicht.");
         }
     
@@ -160,22 +160,22 @@ export default async function (srv: any) {
         const colleagueUUID = colleague_id?.colleague_id;
     
         if (!userUUID || !colleagueUUID) {
-            console.log("❌ Fout: De user_id of colleague_id ontbreekt in het request.");
+            console.log("Fout: De user_id of colleague_id ontbreekt in het request.");
             return req.reject(400, "user_id en colleague_id moeten correct worden opgegeven.");
         }
     
-        console.log(`🔍 Validatie: Gebruiker ${userUUID} en Collega ${colleagueUUID}`);
+        console.log(`Validatie: Gebruiker ${userUUID} en Collega ${colleagueUUID}`);
     
         // Correcte database-query (gebruik de opgehaalde entities)
         const userExists = await cds.transaction(req).run(SELECT.one.from(Users).where({ user_id: userUUID }));
         if (!userExists) {
-            console.log(`❌ Fout: Gebruiker ${userUUID} bestaat niet.`);
+            console.log(`Fout: Gebruiker ${userUUID} bestaat niet.`);
             return req.reject(400, `Gebruiker met ID ${userUUID} bestaat niet.`);
         }
     
         const colleagueExists = await cds.transaction(req).run(SELECT.one.from(Colleagues).where({ colleague_id: colleagueUUID }));
         if (!colleagueExists) {
-            console.log(`❌ Fout: Collega ${colleagueUUID} bestaat niet.`);
+            console.log(`Fout: Collega ${colleagueUUID} bestaat niet.`);
             return req.reject(400, `Collega met ID ${colleagueUUID} bestaat niet.`);
         }
     
