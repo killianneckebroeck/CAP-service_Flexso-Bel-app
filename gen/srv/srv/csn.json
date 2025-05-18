@@ -1,0 +1,638 @@
+{
+  "namespace": "Bel_app",
+  "definitions": {
+    "Bel_app.Colleague": {
+      "kind": "entity",
+      "elements": {
+        "colleague_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "first_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "last_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone_number": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "last_time_called": {
+          "type": "cds.DateTime"
+        },
+        "frequency_level": {
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 100
+        }
+      }
+    },
+    "Bel_app.User": {
+      "kind": "entity",
+      "elements": {
+        "user_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "first_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "last_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone_number": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "password": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "last_time_called": {
+          "type": "cds.DateTime"
+        },
+        "streak_count": {
+          "type": "cds.Integer",
+          "default": {
+            "val": 0
+          }
+        }
+      }
+    },
+    "Bel_app.Followup": {
+      "kind": "entity",
+      "elements": {
+        "followup_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "followup_message": {
+          "type": "cds.String",
+          "length": 3000
+        },
+        "date": {
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "user_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.User",
+          "keys": [
+            {
+              "ref": [
+                "user_id"
+              ]
+            }
+          ]
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Colleague",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Bel_app.Event": {
+      "kind": "entity",
+      "elements": {
+        "event_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "event_name": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": true
+        },
+        "event_description": {
+          "type": "cds.String",
+          "length": 1500,
+          "notNull": true
+        },
+        "event_date": {
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "event_hour": {
+          "type": "cds.Time",
+          "notNull": true
+        }
+      }
+    },
+    "Bel_app.Tag": {
+      "kind": "entity",
+      "elements": {
+        "tag_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "tag_name": {
+          "type": "cds.String",
+          "length": 150
+        },
+        "tag_description": {
+          "type": "cds.String",
+          "length": 1500
+        }
+      }
+    },
+    "Bel_app.User_Followed_Colleague": {
+      "kind": "entity",
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Colleague",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "user_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.User",
+          "keys": [
+            {
+              "ref": [
+                "user_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Bel_app.Tags_Colleagues": {
+      "kind": "entity",
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Colleague",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "tag_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Tag",
+          "keys": [
+            {
+              "ref": [
+                "tag_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Bel_app.Colleague_Event": {
+      "kind": "entity",
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "presence": {
+          "type": "cds.Boolean"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Colleague",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "event_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "Bel_app.Event",
+          "keys": [
+            {
+              "ref": [
+                "event_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "MyService": {
+      "@source": "srv/service.cds",
+      "kind": "service"
+    },
+    "MyService.Colleagues": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Colleague"
+          ]
+        }
+      },
+      "elements": {
+        "colleague_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "first_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "last_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone_number": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "last_time_called": {
+          "type": "cds.DateTime"
+        },
+        "frequency_level": {
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 100
+        }
+      }
+    },
+    "MyService.Users": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.User"
+          ]
+        }
+      },
+      "elements": {
+        "user_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "first_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "last_name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone_number": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "password": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "last_time_called": {
+          "type": "cds.DateTime"
+        },
+        "streak_count": {
+          "type": "cds.Integer",
+          "default": {
+            "val": 0
+          }
+        }
+      }
+    },
+    "MyService.Followups": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Followup"
+          ]
+        }
+      },
+      "elements": {
+        "followup_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "followup_message": {
+          "type": "cds.String",
+          "length": 3000
+        },
+        "date": {
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "user_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Users",
+          "keys": [
+            {
+              "ref": [
+                "user_id"
+              ]
+            }
+          ]
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Colleagues",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "MyService.Events": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Event"
+          ]
+        }
+      },
+      "elements": {
+        "event_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "event_name": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": true
+        },
+        "event_description": {
+          "type": "cds.String",
+          "length": 1500,
+          "notNull": true
+        },
+        "event_date": {
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "event_hour": {
+          "type": "cds.Time",
+          "notNull": true
+        }
+      }
+    },
+    "MyService.Colleague_Events": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Colleague_Event"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "presence": {
+          "type": "cds.Boolean"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Colleagues",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "event_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Events",
+          "keys": [
+            {
+              "ref": [
+                "event_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "MyService.Tags": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Tag"
+          ]
+        }
+      },
+      "elements": {
+        "tag_id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "tag_name": {
+          "type": "cds.String",
+          "length": 150
+        },
+        "tag_description": {
+          "type": "cds.String",
+          "length": 1500
+        }
+      }
+    },
+    "MyService.Tags_Colleagues": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.Tags_Colleagues"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Colleagues",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "tag_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Tags",
+          "keys": [
+            {
+              "ref": [
+                "tag_id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "MyService.User_Followed_Colleagues": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "Bel_app.User_Followed_Colleague"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "colleague_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Colleagues",
+          "keys": [
+            {
+              "ref": [
+                "colleague_id"
+              ]
+            }
+          ]
+        },
+        "user_id": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "MyService.Users",
+          "keys": [
+            {
+              "ref": [
+                "user_id"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v5.8.2",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

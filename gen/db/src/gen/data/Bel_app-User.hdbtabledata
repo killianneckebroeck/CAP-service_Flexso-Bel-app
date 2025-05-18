@@ -1,0 +1,35 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_USER",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-User.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "USER_ID",
+          "FIRST_NAME",
+          "LAST_NAME",
+          "EMAIL",
+          "PASSWORD",
+          "PHONE_NUMBER"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "USER_ID": "user_id",
+        "FIRST_NAME": "first_name",
+        "LAST_NAME": "last_name",
+        "EMAIL": "email",
+        "PASSWORD": "password",
+        "PHONE_NUMBER": "phone_number"
+      }
+    }
+  ]
+}

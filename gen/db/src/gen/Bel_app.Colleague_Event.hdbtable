@@ -1,0 +1,7 @@
+COLUMN TABLE Bel_app_Colleague_Event (
+  id NVARCHAR(36) NOT NULL,
+  presence BOOLEAN,
+  colleague_id_colleague_id NVARCHAR(36),
+  event_id_event_id NVARCHAR(36),
+  PRIMARY KEY(id)
+)

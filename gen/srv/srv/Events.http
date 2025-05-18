@@ -1,0 +1,32 @@
+# GET http://localhost:4004/odata/v4/my/Events
+# Accept: application/json
+
+GET http://localhost:4004/odata/v4/my/Events/123e4567-e89b-12d3-a456-426614174000
+Accept: application/json
+
+
+
+# POST http://localhost:4004/odata/v4/my/Events
+# Content-Type: application/json
+
+# {
+#   "event_name": "SAP CAP Training",
+#   "event_description": "Een training over SAP CAP",
+#   "event_date": "2025-04-15",
+#   "event_hour": "14:00:00"
+# }
+
+
+# PATCH http://localhost:4004/odata/v4/my/Events(event_id='123e4567-e89b-12d3-a456-426614174000')
+# Content-Type: application/json
+
+# {
+#   "event_name": "SAP CAP Advanced Training",
+#   "event_description": "Een geavanceerde training over SAP CAP",
+#   "event_date": "2025-05-10",
+#   "event_hour": "16:00:00"
+# }
+
+
+
+DELETE http://localhost:4004/odata/v4/my/Events/123e4567-e89b-12d3-a456-426614174000

@@ -1,0 +1,6 @@
+COLUMN TABLE Bel_app_User_Followed_Colleague (
+  id NVARCHAR(36) NOT NULL,
+  colleague_id_colleague_id NVARCHAR(36),
+  user_id_user_id NVARCHAR(36),
+  PRIMARY KEY(id)
+)

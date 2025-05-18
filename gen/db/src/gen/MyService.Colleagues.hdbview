@@ -1,0 +1,10 @@
+VIEW MyService_Colleagues AS SELECT
+  Colleague_0.colleague_id,
+  Colleague_0.first_name,
+  Colleague_0.last_name,
+  Colleague_0.email,
+  Colleague_0.phone_number,
+  Colleague_0.last_time_called,
+  Colleague_0.frequency_level,
+  Colleague_0.status
+FROM Bel_app_Colleague AS Colleague_0

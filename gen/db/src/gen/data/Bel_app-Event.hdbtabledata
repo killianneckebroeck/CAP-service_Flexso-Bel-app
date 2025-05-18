@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_EVENT",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Event.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "EVENT_ID",
+          "EVENT_NAME",
+          "EVENT_DESCRIPTION",
+          "EVENT_DATE",
+          "EVENT_HOUR"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "EVENT_ID": "event_id",
+        "EVENT_NAME": "event_name",
+        "EVENT_DESCRIPTION": "event_description",
+        "EVENT_DATE": "event_date",
+        "EVENT_HOUR": "event_hour"
+      }
+    }
+  ]
+}

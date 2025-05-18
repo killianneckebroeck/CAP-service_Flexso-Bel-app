@@ -1,0 +1,6 @@
+COLUMN TABLE Bel_app_Tag (
+  tag_id NVARCHAR(36) NOT NULL,
+  tag_name NVARCHAR(150),
+  tag_description NVARCHAR(1500),
+  PRIMARY KEY(tag_id)
+)

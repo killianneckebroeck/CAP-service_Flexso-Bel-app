@@ -1,0 +1,8 @@
+COLUMN TABLE Bel_app_Followup (
+  followup_id NVARCHAR(36) NOT NULL,
+  followup_message NVARCHAR(3000),
+  "DATE" SECONDDATE NOT NULL,
+  user_id_user_id NVARCHAR(36),
+  colleague_id_colleague_id NVARCHAR(36),
+  PRIMARY KEY(followup_id)
+)

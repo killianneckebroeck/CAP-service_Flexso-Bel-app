@@ -1,0 +1,7 @@
+VIEW MyService_Events AS SELECT
+  Event_0.event_id,
+  Event_0.event_name,
+  Event_0.event_description,
+  Event_0.event_date,
+  Event_0.event_hour
+FROM Bel_app_Event AS Event_0

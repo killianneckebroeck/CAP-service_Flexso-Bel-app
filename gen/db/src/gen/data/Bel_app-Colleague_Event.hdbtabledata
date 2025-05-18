@@ -1,0 +1,31 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_COLLEAGUE_EVENT",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Colleague_Event.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "ID",
+          "PRESENCE",
+          "COLLEAGUE_ID_COLLEAGUE_ID",
+          "EVENT_ID_EVENT_ID"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "ID": "id",
+        "PRESENCE": "presence",
+        "COLLEAGUE_ID_COLLEAGUE_ID": "colleague_id_colleague_id",
+        "EVENT_ID_EVENT_ID": "event_id_event_id"
+      }
+    }
+  ]
+}

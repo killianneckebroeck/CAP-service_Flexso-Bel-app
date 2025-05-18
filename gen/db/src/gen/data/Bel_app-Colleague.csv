@@ -1,0 +1,75 @@
+colleague_id;last_name;first_name;email;phone_number;last_time_called;frequency_level;status
+1;Alexander;Raf;raf.alexander@flexso.com;+32474982891;2021-12-31T18:59:55Z;Low;Longer than one month ago
+2;Pierre;David;david.pierre@flexso.com;+32472929975;2021-12-31T18:59:55Z;Medium;Longer than one month ago
+3;Callant;Marjolein;marjolein.callant@flexso.com;+32494561236;2021-12-31T18:59:55Z;High;Longer than one month ago
+4;Van Bree;Bert;bert.vanbree@flexso.com;+32476296362;2021-12-31T18:59:55Z;Low;Longer than one month ago
+5;Goris;Nicolas;nicolas.goris@flexso.com;+32497023115;2021-12-31T18:59:55Z;Medium;Longer than one month ago
+6;Follon;Maarten;maarten.follon@flexso.com;+32499318311;2021-12-31T19:59:55Z;Low;Longer than a month ago
+7;Van Campenhout;Tom;tom.vancampenhout@flexso.com;+32496964709;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+8;Vansant;Mathias;mathias.vansant@flexso.com;+32471134264;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+9;Buckinx;Geertje;geertje.buckinx@flexso.com;+32478950162;2021-12-31T19:59:55Z;Low;Longer than a month ago
+10;Dhooghe;Tom;Tom.dhooghe@flexso.com;+32476384466;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+11;Anane;Maarten;maarten.anane@flexso.com;+32494101007;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+12;Mertens;Gert;gert.mertens@flexso.com;+32474620710;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+13;Vander Elst;Jordan;jordan.vanderelst@flexso.com;+32499314374;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+14;Van Vaerenbergh;Dries;dries.vanvaerenbergh@flexso.com;+32470562657;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+15;Van Nierop;Patrick;patrick.vannierop@flexso.com;+32497424356;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+16;De Poorter;Michael;michael.depoorter@flexso.com;+32486731158;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+17;Verhoeven;Pieter;pieter.verhoeven@flexso.com;+32496171169;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+18;Viane;Ringo;ringo.viane@flexso.com;+32475300050;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+19;Boudiba;Youssef;youssef.boudiba@flexso.com;+32475643200;2021-12-31T19:59:55Z;Low;Longer than a month ago
+20;Verschueren;Kristof;kristof.verschueren@flexso.com;+32477232843;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+21;Noyens;Stef;stef.noyens@flexso.com;+32494174213;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+22;Van Praet;Joachim;joachim.vanpraet@flexso.com;+32477940243;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+23;Pelsmaekers;Bart;bart.pelsmaekers@flexso.com;+32496120637;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+24;Hangisi;Mehmet;mehmet.hangisi@flexso.com;+32486638174;2021-12-31T19:59:55Z;Low;Longer than a month ago
+25;Smet;Femke;femke.smet@flexso.com;+32496446995;2021-12-31T19:59:55Z;High;Longer than a month ago
+26;Heyvaert;Kenneth;kenneth.heyvaert@flexso.com;+32477999106;2021-12-31T19:59:55Z;High;Longer than a month ago
+27;Van Den Berghe;Tim;tim.vandenberghe@flexso.com;+32495443510;2021-12-31T19:59:55Z;High;Longer than a month ago
+28;Jennes;Kjenti;kjenti.jennes@flexso.com;+32472822890;2022-01-22T13:09:21Z;High;Longer than a month ago
+29;Verhegge;Gaetan;gaetan.verhegge@flexso.com;+32456254182;2021-12-31T19:59:55Z;High;Longer than a month ago
+30;Decock;Jules;jules.decock@flexso.com;+32474254145;2021-12-31T19:59:55Z;High;Longer than a month ago
+31;Teirlynck;Pieter;pieter.teirlynck@flexso.com;+32470976919;2021-12-31T19:59:55Z;Low;Longer than a month ago
+32;Van Impe;Michael;michael.vanimpe@flexso.com;+32476617065;2021-12-31T19:59:55Z;High;Longer than a month ago
+33;Van Loon;Jorg;jorg.vanloon@flexso.com;+32485746502;2021-12-31T19:59:55Z;High;Longer than a month ago
+34;Swolfs;Thomas;thomas.swolfs@flexso.com;+32474447388;2021-12-31T19:59:55Z;High;Longer than a month ago
+35;Vernelen;Igor;igor.vernelen@flexso.com;+32475975859;2021-12-31T19:59:55Z;High;Longer than a month ago
+36;Capellen;Kristof;kristof.capellen@flexso.com;+32496252308;2021-12-31T19:59:55Z;High;Longer than a month ago
+37;De Roo;Kim;kim.deroo@flexso.com;+32493681208;2021-12-31T19:59:55Z;High;Longer than a month ago
+38;Deman;Ronny;ronny.deman@flexso.com;+32477638706;2021-12-31T19:59:55Z;High;Longer than a month ago
+39;Vanheusden;Jimmy;jimmy.vanheusden@flexso.com;+32472507704;2021-12-31T19:59:55Z;High;Longer than a month ago
+40;Verdoodt;Stijn;stijn.verdoodt@flexso.com;+32474126005;2021-12-31T19:59:55Z;Low;Longer than a month ago
+41;Verschueren;Wim;wim.verschueren@flexso.com;+32495457876;2021-12-31T19:59:55Z;Low;Longer than a month ago
+42;Pissoort;Matthias;matthias.pissoort@flexso.com;+32497038830;2021-12-31T19:59:55Z;Low;Longer than a month ago
+43;Aerts;Ron;ron.aerts@flexso.com;+32497823127;2021-12-31T19:59:55Z;Low;Longer than a month ago
+44;Schoukens;Kim;kim.schoukens@flexso.com;+32479965804;2021-12-31T19:59:55Z;Low;Longer than a month ago
+45;Bekaert;Wannes;wannes.bekaert@flexso.com;+32484902425;2021-12-31T19:59:55Z;Low;Longer than a month ago
+46;Borgmans;Stefan;stefan.borgmans@flexso.com;+32499246029;2021-12-31T19:59:55Z;Low;Longer than a month ago
+47;Kamhoot;Arnaut;arnaut.kamhoot@flexso.com;+3.10625E+11;2021-12-31T19:59:55Z;Low;Longer than a month ago
+48;Mangelschots;Dries;dries.mangelschots@flexso.com;+32474063633;2021-12-31T19:59:55Z;Low;Longer than a month ago
+49;Walravens;Maxime;maxime.walravens@flexso.com;+32475570331;2021-12-31T19:59:55Z;Low;Longer than a month ago
+50;Smet;Philippe;philippe.smet@flexso.com;+32496279239;2021-12-31T19:59:55Z;Low;Longer than a month ago
+51;Van Eeckhoutte;Bert;bert.vaneeckhoute@flexso.com;+32499764654;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+52;Von Arx;Judith;judith.vonarx@flexso.com;+32475435550;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+53;Geukens;Peter;peter.geukens@flexso.com;+32496384121;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+54;Verstraeten;Chris;chris.verstraeten@flexso.com;+32477602004;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+55;Schrever;Bart;bart.schrever@flexso.com;+3.52661E+11;2021-12-31T19:59:55Z;Low;Longer than a month ago
+56;Verachtert;Liesbeth;liesbeth.verachtert@flexso.com;+32477724805;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+57;Fannes;Sofie;sofie.fannes@flexso.com;+32486453639;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+58;Willems;Erika;erika.willems@flexso.com;+32472708922;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+59;De Kort;Jannes;jannes.dekort@flexso.com;+32496157534;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+60;Walravens-Hjiyer;Fouad;fouad.walravens-hjiyer@flexso.com;+32473640148;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+61;Waeterschoot;Gert;gert.waeterschoot@flexso.com;+32470059783;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+62;Bouton;Eva;eva.bouton@flexso.com;+32473295104;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+63;Janssens;Bert;bert.janssens@flexso.com;+32499594590;2021-12-31T19:59:55Z;Medium;Longer than a month ago
+64;Rombaut;Yor;yor.rombaut@flexso.com;+32494041614;2022-04-07T08:08:31Z;Medium;Less than one month ago
+65;Van Parys;Jens;Jens.Vanparys@flexso.com;32472401348;2022-05-19T08:08:52Z;Medium;Less than one month ago
+66;Koolen;Ann;ann.koolen@flexso.com;32497677849;2022-05-02T13:28:58Z;Medium;Less than one month ago
+67;Goossens;Grisja;grisja.goossens@flexso.com;32472532344;2022-04-06T10:04:10Z;Medium;Less than a month ago
+68;Peeters;Maarten;maarten.peeters@flexso.com;32496139077;2022-04-07T07:59:07Z;Medium;Less than a month ago
+69;Nelissen;Thomas;thomas.nelissen@flexso.com;32485415489;2022-04-06T11:29:06Z;Medium;Less than a month ago
+70;De Klerk;Jonis;jonis.deklerk@flexso.com;32494886156;2022-05-10T05:40:38Z;Medium;Less than a month ago
+71;Puttemans;Stijn;stijn.puttemans@flexso.com;32496370844;2022-05-02T13:14:16Z;Medium;Less than a month ago
+72;Deleener;Nico;nico.deleener@flexso.com;32477372818;2022-05-10T05:44:14Z;Medium;Less than a month ago
+73;Destoop;Jelle;jelle.destoop@flexso.com;32471640832;2022-05-10T05:37:08Z;Medium;Less than a month ago
+74;Mallaerts;Zjef;zjef.mallaerts@flexso.com;32478405234;2022-04-06T10:00:12Z;Medium;Less than a month ago

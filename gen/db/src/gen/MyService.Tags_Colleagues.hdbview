@@ -1,0 +1,5 @@
+VIEW MyService_Tags_Colleagues AS SELECT
+  Tags_Colleagues_0.id,
+  Tags_Colleagues_0.colleague_id_colleague_id,
+  Tags_Colleagues_0.tag_id_tag_id
+FROM Bel_app_Tags_Colleagues AS Tags_Colleagues_0

@@ -1,0 +1,31 @@
+# GET http://localhost:4004/odata/v4/my/Followups
+# Accept: application/json
+
+# GET http://localhost:4004/odata/v4/my/Users
+# Accept: application/json
+
+# GET http://localhost:4004/odata/v4/my/Followups/9af78246-885b-4747-b55a-2966abdf923c
+# Accept: application/json
+
+# GET http://localhost:4004/odata/v4/my/Users
+# Accept: application/json
+
+# POST http://localhost:4004/odata/v4/my/Followups
+# Content-Type: application/json
+
+# {
+#   "followup_message": "Test follow-up",
+#   "date": "2025-03-12T14:30:00Z",
+#   "user_id": { "user_id": "0bc52ea2-cd45-459c-b2d5-bbf6e8f9a146" },
+#   "colleague_id": { "colleague_id": "9aeb0510-f037-4e4b-8978-544fc830831d" }
+# }
+
+
+# PATCH http://localhost:4004/odata/v4/my/Followups/6638b1fc-b57e-4361-a681-d37e66fce428
+# Content-Type: application/json
+
+# {
+#   "followup_message": "Updated follow-up message"
+# }
+
+DELETE http://localhost:4004/odata/v4/my/Followups/6638b1fc-b57e-4361-a681-d37e66fce428

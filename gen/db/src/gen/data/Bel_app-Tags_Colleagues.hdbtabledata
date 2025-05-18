@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_TAGS_COLLEAGUES",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Tags_Colleagues.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "ID",
+          "COLLEAGUE_ID_COLLEAGUE_ID",
+          "TAG_ID_TAG_ID"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "ID": "id",
+        "COLLEAGUE_ID_COLLEAGUE_ID": "colleague_id_colleague_id",
+        "TAG_ID_TAG_ID": "tag_id_tag_id"
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="MyService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotation Term="Core.Links">
+        <Collection>
+          <Record>
+            <PropertyValue Property="rel" String="author"/>
+            <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+          </Record>
+        </Collection>
+      </Annotation>
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="Colleagues" EntityType="MyService.Colleagues"/>
+        <EntitySet Name="Users" EntityType="MyService.Users"/>
+        <EntitySet Name="Followups" EntityType="MyService.Followups">
+          <NavigationPropertyBinding Path="user_id" Target="Users"/>
+          <NavigationPropertyBinding Path="colleague_id" Target="Colleagues"/>
+        </EntitySet>
+        <EntitySet Name="Events" EntityType="MyService.Events"/>
+        <EntitySet Name="Colleague_Events" EntityType="MyService.Colleague_Events">
+          <NavigationPropertyBinding Path="colleague_id" Target="Colleagues"/>
+          <NavigationPropertyBinding Path="event_id" Target="Events"/>
+        </EntitySet>
+        <EntitySet Name="Tags" EntityType="MyService.Tags"/>
+        <EntitySet Name="Tags_Colleagues" EntityType="MyService.Tags_Colleagues">
+          <NavigationPropertyBinding Path="colleague_id" Target="Colleagues"/>
+          <NavigationPropertyBinding Path="tag_id" Target="Tags"/>
+        </EntitySet>
+        <EntitySet Name="User_Followed_Colleagues" EntityType="MyService.User_Followed_Colleagues">
+          <NavigationPropertyBinding Path="colleague_id" Target="Colleagues"/>
+          <NavigationPropertyBinding Path="user_id" Target="Users"/>
+        </EntitySet>
+      </EntityContainer>
+      <EntityType Name="Colleagues">
+        <Key>
+          <PropertyRef Name="colleague_id"/>
+        </Key>
+        <Property Name="colleague_id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="first_name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="last_name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="email" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="phone_number" Type="Edm.String" MaxLength="100"/>
+        <Property Name="last_time_called" Type="Edm.DateTimeOffset"/>
+        <Property Name="frequency_level" Type="Edm.String" MaxLength="10" Nullable="false"/>
+        <Property Name="status" Type="Edm.String" MaxLength="100"/>
+      </EntityType>
+      <EntityType Name="Users">
+        <Key>
+          <PropertyRef Name="user_id"/>
+        </Key>
+        <Property Name="user_id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="first_name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="last_name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="email" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="phone_number" Type="Edm.String" MaxLength="100"/>
+        <Property Name="password" Type="Edm.String" MaxLength="100"/>
+        <Property Name="last_time_called" Type="Edm.DateTimeOffset"/>
+        <Property Name="streak_count" Type="Edm.Int32" DefaultValue="0"/>
+      </EntityType>
+      <EntityType Name="Followups">
+        <Key>
+          <PropertyRef Name="followup_id"/>
+        </Key>
+        <Property Name="followup_id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="followup_message" Type="Edm.String" MaxLength="3000"/>
+        <Property Name="date" Type="Edm.DateTimeOffset" Nullable="false"/>
+        <NavigationProperty Name="user_id" Type="MyService.Users">
+          <ReferentialConstraint Property="user_id_user_id" ReferencedProperty="user_id"/>
+        </NavigationProperty>
+        <Property Name="user_id_user_id" Type="Edm.Guid"/>
+        <NavigationProperty Name="colleague_id" Type="MyService.Colleagues">
+          <ReferentialConstraint Property="colleague_id_colleague_id" ReferencedProperty="colleague_id"/>
+        </NavigationProperty>
+        <Property Name="colleague_id_colleague_id" Type="Edm.Guid"/>
+      </EntityType>
+      <EntityType Name="Events">
+        <Key>
+          <PropertyRef Name="event_id"/>
+        </Key>
+        <Property Name="event_id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="event_name" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="event_description" Type="Edm.String" MaxLength="1500" Nullable="false"/>
+        <Property Name="event_date" Type="Edm.Date" Nullable="false"/>
+        <Property Name="event_hour" Type="Edm.TimeOfDay" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="Colleague_Events">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="presence" Type="Edm.Boolean"/>
+        <NavigationProperty Name="colleague_id" Type="MyService.Colleagues">
+          <ReferentialConstraint Property="colleague_id_colleague_id" ReferencedProperty="colleague_id"/>
+        </NavigationProperty>
+        <Property Name="colleague_id_colleague_id" Type="Edm.Guid"/>
+        <NavigationProperty Name="event_id" Type="MyService.Events">
+          <ReferentialConstraint Property="event_id_event_id" ReferencedProperty="event_id"/>
+        </NavigationProperty>
+        <Property Name="event_id_event_id" Type="Edm.Guid"/>
+      </EntityType>
+      <EntityType Name="Tags">
+        <Key>
+          <PropertyRef Name="tag_id"/>
+        </Key>
+        <Property Name="tag_id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="tag_name" Type="Edm.String" MaxLength="150"/>
+        <Property Name="tag_description" Type="Edm.String" MaxLength="1500"/>
+      </EntityType>
+      <EntityType Name="Tags_Colleagues">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="colleague_id" Type="MyService.Colleagues">
+          <ReferentialConstraint Property="colleague_id_colleague_id" ReferencedProperty="colleague_id"/>
+        </NavigationProperty>
+        <Property Name="colleague_id_colleague_id" Type="Edm.Guid"/>
+        <NavigationProperty Name="tag_id" Type="MyService.Tags">
+          <ReferentialConstraint Property="tag_id_tag_id" ReferencedProperty="tag_id"/>
+        </NavigationProperty>
+        <Property Name="tag_id_tag_id" Type="Edm.Guid"/>
+      </EntityType>
+      <EntityType Name="User_Followed_Colleagues">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="colleague_id" Type="MyService.Colleagues">
+          <ReferentialConstraint Property="colleague_id_colleague_id" ReferencedProperty="colleague_id"/>
+        </NavigationProperty>
+        <Property Name="colleague_id_colleague_id" Type="Edm.Guid"/>
+        <NavigationProperty Name="user_id" Type="MyService.Users">
+          <ReferentialConstraint Property="user_id_user_id" ReferencedProperty="user_id"/>
+        </NavigationProperty>
+        <Property Name="user_id_user_id" Type="Edm.Guid"/>
+      </EntityType>
+      <Annotations Target="MyService.Colleagues/colleague_id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Users/user_id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Followups/followup_id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Events/event_id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Colleague_Events/id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Tags/tag_id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.Tags_Colleagues/id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="MyService.User_Followed_Colleagues/id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

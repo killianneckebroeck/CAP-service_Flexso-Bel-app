@@ -1,0 +1,11 @@
+COLUMN TABLE Bel_app_Colleague (
+  colleague_id NVARCHAR(36) NOT NULL,
+  first_name NVARCHAR(100) NOT NULL,
+  last_name NVARCHAR(100) NOT NULL,
+  email NVARCHAR(100) NOT NULL,
+  phone_number NVARCHAR(100),
+  last_time_called SECONDDATE,
+  frequency_level NVARCHAR(10) NOT NULL,
+  status NVARCHAR(100),
+  PRIMARY KEY(colleague_id)
+)

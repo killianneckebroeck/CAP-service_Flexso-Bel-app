@@ -1,0 +1,11 @@
+COLUMN TABLE Bel_app_User (
+  user_id NVARCHAR(36) NOT NULL,
+  first_name NVARCHAR(100) NOT NULL,
+  last_name NVARCHAR(100) NOT NULL,
+  email NVARCHAR(100) NOT NULL,
+  phone_number NVARCHAR(100),
+  password NVARCHAR(100),
+  last_time_called SECONDDATE,
+  streak_count INTEGER DEFAULT 0,
+  PRIMARY KEY(user_id)
+)

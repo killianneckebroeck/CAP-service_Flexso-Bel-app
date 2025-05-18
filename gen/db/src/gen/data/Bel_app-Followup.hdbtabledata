@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_FOLLOWUP",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Followup.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "FOLLOWUP_ID",
+          "FOLLOWUP_MESSAGE",
+          "DATE",
+          "COLLEAGUE_ID_COLLEAGUE_ID",
+          "USER_ID_USER_ID"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "FOLLOWUP_ID": "followup_id",
+        "FOLLOWUP_MESSAGE": "followup_message",
+        "DATE": "date",
+        "COLLEAGUE_ID_COLLEAGUE_ID": "colleague_id_colleague_id",
+        "USER_ID_USER_ID": "user_id_user_id"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+GET http://localhost:4004/odata/v4/my/Tags_Colleagues(colleague_id='1')
+Accept: application/json
+
+# GET http://localhost:4004/odata/v4/my/Tags_Colleagues/167d382b-3fcf-4a38-9004-4e086f7cd7b5
+# Accept: application/json
+
+# POST http://localhost:4004/odata/v4/my/Tags_Colleagues
+# Content-Type: application/json
+
+{
+  "colleague_id": { "colleague_id": "14" },
+  "tag_id": { "tag_id": "5e7f8d91-b9a2-4b7e-a073-34855cfd936d" }
+}
+
+
+# DELETE http://localhost:4004/odata/v4/my/Tags_Colleagues/e2f8d7a8-4c91-4f5c-b8c5-b854eb5ec49e
+# Content-Type: application/json

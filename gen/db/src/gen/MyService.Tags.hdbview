@@ -1,0 +1,5 @@
+VIEW MyService_Tags AS SELECT
+  Tag_0.tag_id,
+  Tag_0.tag_name,
+  Tag_0.tag_description
+FROM Bel_app_Tag AS Tag_0

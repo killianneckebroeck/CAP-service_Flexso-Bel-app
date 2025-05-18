@@ -1,0 +1,7 @@
+VIEW MyService_Followups AS SELECT
+  Followup_0.followup_id,
+  Followup_0.followup_message,
+  Followup_0."DATE",
+  Followup_0.user_id_user_id,
+  Followup_0.colleague_id_colleague_id
+FROM Bel_app_Followup AS Followup_0

@@ -1,0 +1,6 @@
+VIEW MyService_Colleague_Events AS SELECT
+  Colleague_Event_0.id,
+  Colleague_Event_0.presence,
+  Colleague_Event_0.colleague_id_colleague_id,
+  Colleague_Event_0.event_id_event_id
+FROM Bel_app_Colleague_Event AS Colleague_Event_0

@@ -1,0 +1,8 @@
+{
+    "cds": {
+      "server": {
+        "hook": "dist/srv/service.js"
+      }
+    }
+  }
+  

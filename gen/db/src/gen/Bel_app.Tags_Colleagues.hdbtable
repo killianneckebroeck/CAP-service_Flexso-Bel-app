@@ -1,0 +1,6 @@
+COLUMN TABLE Bel_app_Tags_Colleagues (
+  id NVARCHAR(36) NOT NULL,
+  colleague_id_colleague_id NVARCHAR(36),
+  tag_id_tag_id NVARCHAR(36),
+  PRIMARY KEY(id)
+)

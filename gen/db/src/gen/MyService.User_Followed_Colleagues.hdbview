@@ -1,0 +1,5 @@
+VIEW MyService_User_Followed_Colleagues AS SELECT
+  User_Followed_Colleague_0.id,
+  User_Followed_Colleague_0.colleague_id_colleague_id,
+  User_Followed_Colleague_0.user_id_user_id
+FROM Bel_app_User_Followed_Colleague AS User_Followed_Colleague_0

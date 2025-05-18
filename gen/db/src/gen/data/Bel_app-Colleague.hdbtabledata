@@ -1,0 +1,39 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_COLLEAGUE",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Colleague.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "COLLEAGUE_ID",
+          "LAST_NAME",
+          "FIRST_NAME",
+          "EMAIL",
+          "PHONE_NUMBER",
+          "LAST_TIME_CALLED",
+          "FREQUENCY_LEVEL",
+          "STATUS"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "COLLEAGUE_ID": "colleague_id",
+        "LAST_NAME": "last_name",
+        "FIRST_NAME": "first_name",
+        "EMAIL": "email",
+        "PHONE_NUMBER": "phone_number",
+        "LAST_TIME_CALLED": "last_time_called",
+        "FREQUENCY_LEVEL": "frequency_level",
+        "STATUS": "status"
+      }
+    }
+  ]
+}

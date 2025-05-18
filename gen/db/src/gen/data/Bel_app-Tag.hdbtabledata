@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "BEL_APP_TAG",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "Bel_app-Tag.csv",
+        "has_header": true,
+        "type_config": {
+          "delimiter": ";"
+        }
+      },
+      "import_settings": {
+        "import_columns": [
+          "TAG_ID",
+          "TAG_NAME",
+          "TAG_DESCRIPTION"
+        ],
+        "include_filter": []
+      },
+      "column_mappings": {
+        "TAG_ID": "tag_id",
+        "TAG_NAME": "tag_name",
+        "TAG_DESCRIPTION": "tag_description"
+      }
+    }
+  ]
+}

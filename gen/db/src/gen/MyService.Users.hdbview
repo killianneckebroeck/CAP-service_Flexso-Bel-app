@@ -1,0 +1,10 @@
+VIEW MyService_Users AS SELECT
+  User_0.user_id,
+  User_0.first_name,
+  User_0.last_name,
+  User_0.email,
+  User_0.phone_number,
+  User_0.password,
+  User_0.last_time_called,
+  User_0.streak_count
+FROM Bel_app_User AS User_0

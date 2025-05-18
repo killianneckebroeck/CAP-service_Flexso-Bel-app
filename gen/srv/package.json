@@ -1,0 +1,88 @@
+{
+  "name": "Bel_app",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/http-client": "^3.26.1",
+    "@sap-cloud-sdk/util": "^3.26.1",
+    "@sap/cds": "^8",
+    "@sap/low-code-event-handler": "^1.2.5",
+    "@sap/xsenv": ">=3.3.2 <3.3.3",
+    "@sap/xssec": "^4",
+    "axios": "^1.8.3",
+    "cors": "^2.8.5",
+    "express": "^4",
+    "hdb": "^0.19.12",
+    "nvm": "^0.0.4",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.9.0",
+    "@cap-js/sqlite": "^1.8.0",
+    "@sap/cds-dk": "^8",
+    "@sap/dev-cap-tools": "^1.31.0",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^22.13.10",
+    "@types/sap__xsenv": "^3.3.2",
+    "chai": "^5.2.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build": "tsc",
+    "start-local": "npm run build && cds-serve",
+    "generate-entry-point": "dev-cap-tools gen-entrypoint",
+    "cds-watch": "cds watch --open",
+    "watch": "npm run build && cds watch"
+  },
+  "cds": {
+    "fiori": {
+      "preview": true
+    },
+    "server": {
+      "index": true,
+      "hook": "./srv/service.ts"
+    },
+    "sql": {
+      "native_hana_associations": false
+    },
+    "requires": {
+      "cors": {
+        "origin": "*",
+        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+        "headers": ["Content-Type", "Authorization", "x-csrf-token"]
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db.sqlite"
+        }
+      },
+      "[production]": {
+        "db": {
+          "kind": "hana",
+          "service": "Bel_app-db"
+        },
+        "auth": {
+          "kind": "xsuaa",
+          "service": "Bel_app-auth"
+        }
+      }
+    },
+    "auth": {
+      "[development]": {
+        "kind": "dummy"
+      },
+      "[production]": {
+        "kind": "xsuaa",
+        "service": "Bel_app-auth"
+      }
+    }
+  },
+  "lcap": true
+}
