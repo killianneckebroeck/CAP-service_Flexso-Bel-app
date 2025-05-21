@@ -5,7 +5,6 @@ import * as xsenv from '@sap/xsenv';
 
 const app = express();
 cds.on('bootstrap', async (app) => {
-    // ✅ CORS inschakelen voor lokale UI5 ontwikkeling
     app.use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
@@ -13,9 +12,9 @@ cds.on('bootstrap', async (app) => {
         next();
     });
 
-    console.log('✅ CORS is ingeschakeld');
+    console.log('CORS is ingeschakeld');
 
-    // ✅ OAuth-token endpoint
+    // OAuth-token endpoint
     app.get('/api/token', async (req: Request, res: Response) => {
         try {
             const xsuaa = xsenv.getServices<{ xsuaa: { url: string, clientid: string, clientsecret: string } }>({ xsuaa: { tag: 'xsuaa' } }).xsuaa;
@@ -30,12 +29,12 @@ cds.on('bootstrap', async (app) => {
 
             res.json({ access_token: response.data.access_token });
         } catch (error) {
-            console.error('❌ Fout bij ophalen OAuth token:', error);
+            console.error('Fout bij ophalen OAuth token:', error);
             res.status(500).json({ error: 'OAuth-token ophalen mislukt' });
         }
     });
 
-    console.log('🚀 CAP-service draait met OAuth 2.0 authenticatie!');
+    console.log('CAP-service draait met OAuth 2.0 authenticatie!');
 });
 
 export default cds.server;

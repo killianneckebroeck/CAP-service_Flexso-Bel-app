@@ -54,8 +54,19 @@
     "requires": {
       "cors": {
         "origin": "*",
-        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        "headers": ["Content-Type", "Authorization", "x-csrf-token"]
+        "methods": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+          "OPTIONS"
+        ],
+        "headers": [
+          "Content-Type",
+          "Authorization",
+          "x-csrf-token"
+        ]
       },
       "db": {
         "kind": "sqlite",

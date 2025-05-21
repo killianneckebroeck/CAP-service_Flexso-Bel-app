@@ -12,20 +12,7 @@
       "https://*.us10-001.hana.ondemand.com/**"
     ]
   },
-  "allowedCorsOrigins": [
-    "http://localhost:8080",
-    "https://*.hana.ondemand.com"
-  ],
-  "allowedHeaders": [
-    "Content-Type",
-    "Authorization",
-    "x-csrf-token"
-  ],
-  "allowedMethods": [
-    "GET",
-    "POST",
-    "PUT",
-    "DELETE",
-    "OPTIONS"
-  ]
+  "scopes": [],
+  "attributes": [],
+  "role-templates": []
 }

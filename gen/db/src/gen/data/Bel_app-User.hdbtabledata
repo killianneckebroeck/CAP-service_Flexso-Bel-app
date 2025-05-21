@@ -18,7 +18,9 @@
           "LAST_NAME",
           "EMAIL",
           "PASSWORD",
-          "PHONE_NUMBER"
+          "PHONE_NUMBER",
+          "LAST_TIME_CALLED",
+          "STREAK_COUNT"
         ],
         "include_filter": []
       },
@@ -28,7 +30,9 @@
         "LAST_NAME": "last_name",
         "EMAIL": "email",
         "PASSWORD": "password",
-        "PHONE_NUMBER": "phone_number"
+        "PHONE_NUMBER": "phone_number",
+        "LAST_TIME_CALLED": "last_time_called",
+        "STREAK_COUNT": "streak_count"
       }
     }
   ]
